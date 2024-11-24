@@ -2,10 +2,11 @@
 VEC_OF_PAIRS generate_pairs(std::string key, std::string text) {
   VEC_OF_PAIRS pair_vec{};
   int key_index = 0;
+  int key_size = key.size();
 
   for (int i = 0; i < text.size(); i++) {
     if (text.at(i) != ' ') {
-      pair_vec.push_back({text.at(i), key.at(key_index % 7)});
+      pair_vec.push_back({text.at(i), key.at(key_index % key_size)});
       key_index++;
     } else
       pair_vec.push_back({' ', ' '});
