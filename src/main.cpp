@@ -58,6 +58,8 @@ MyFrame::MyFrame(const wxString &title)
   wxButton *decryptButton = new wxButton(panel, ID_Decrypt, "Decrypt");
   wxButton *clearButton = new wxButton(panel, wxID_ANY, "Clear");
 
+  //this adds the elements to the grid instance running on top of the frame
+
   vbox->Add(keyLabel, 0, wxEXPAND | wxALL, 10);
   vbox->Add(keyInput, 0, wxEXPAND | wxALL, 10);
   vbox->Add(textLabel, 0, wxEXPAND | wxALL, 10);
