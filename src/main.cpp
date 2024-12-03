@@ -3,7 +3,10 @@
 #include <thread>
 #include <vector>
 #include <wx/wx.h>
+#include "../libs/playfair.h"
 
+//TODO:: Add Playfair radio button;
+//TODO:: Add Playfair Functionality;
 class VigenereUI : public wxApp {
 public:
   virtual bool OnInit();
@@ -14,8 +17,8 @@ public:
   MyFrame(const wxString &title);
 
 private:
-  void OnEncrypt(wxCommandEvent &event);
-  void OnDecrypt(wxCommandEvent &event);
+  void VigenereOnEncrypt(wxCommandEvent &event);
+  void VigenereOnDecrypt(wxCommandEvent &event);
   void OnClear(wxCommandEvent &event);
 
   wxTextCtrl *keyInput;
@@ -27,8 +30,8 @@ private:
 
 enum { ID_Encrypt = 1, ID_Decrypt = 2 };
 
-wxBEGIN_EVENT_TABLE(MyFrame, wxFrame) EVT_BUTTON(ID_Encrypt, MyFrame::OnEncrypt)
-    EVT_BUTTON(ID_Decrypt, MyFrame::OnDecrypt)
+wxBEGIN_EVENT_TABLE(MyFrame, wxFrame) EVT_BUTTON(ID_Encrypt, MyFrame::VigenereOnEncrypt)
+    EVT_BUTTON(ID_Decrypt, MyFrame::VigenereOnDecrypt)
         EVT_BUTTON(wxID_ANY, MyFrame::OnClear) wxEND_EVENT_TABLE()
 
             wxIMPLEMENT_APP(VigenereUI);
@@ -80,7 +83,7 @@ void MyFrame::OnClear(wxCommandEvent &event) {
   resultOutput->SetValue("");
 }
 
-void MyFrame::OnEncrypt(wxCommandEvent &event) {
+void MyFrame::VigenereOnEncrypt(wxCommandEvent &event) {
   std::string key = std::string(keyInput->GetValue().mb_str());
   std::string text = std::string(textInput->GetValue().mb_str());
 
@@ -104,7 +107,7 @@ void MyFrame::OnEncrypt(wxCommandEvent &event) {
   resultOutput->SetValue(wxString(std::string(result.begin(), result.end())));
 }
 
-void MyFrame::OnDecrypt(wxCommandEvent &event) {
+void MyFrame::VigenereOnDecrypt(wxCommandEvent &event) {
   std::string key = std::string(keyInput->GetValue().mb_str());
   std::string text = std::string(textInput->GetValue().mb_str());
 

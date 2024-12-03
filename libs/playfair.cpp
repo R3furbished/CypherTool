@@ -241,9 +241,4 @@ std::string Playfair::encrypt(const std::string &key, const std::string &text) {
   return encrypted_text;
 }
 
-int main() {
-  std::string key = "SEGREDO";
-  std::string text = "YCAPVHSGLCPWNCRDBOPI";
-  Playfair::decrypt(key, text);
-  return 0;
-}
+
